@@ -1,0 +1,9 @@
+{%extends "base.html"%}
+{%block content%}
+<h1>Hello, world! my name is {{name}}</h1>
+<ul class="list-group list-group-horizontal">
+  {% for element in my_list %}
+  <li class="list-group-item ">List element: {{ element }}</li>
+</ul>
+  {% endfor %}
+  {%endblock%}
