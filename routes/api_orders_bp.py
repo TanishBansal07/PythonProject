@@ -1,9 +1,9 @@
 from flask import Blueprint, jsonify, request, redirect, url_for, render_template
 from db import db
 from models import Customer, Products, Order, ProductOrder
+
 # Create a Blueprint for the customers API
 api_order_bp = Blueprint("api_orders", __name__)
-
 
 
 @api_order_bp.route("", methods=["POST"])
@@ -30,6 +30,8 @@ def add_order():
 
     db.session.commit()
     return "", 201
+
+
 @api_order_bp.route("/<int:id>/delete", methods=["POST"])
 def delete_order(id):
     order = db.get_or_404(Order, id)
@@ -39,6 +41,7 @@ def delete_order(id):
     db.session.commit()
     return redirect(url_for("html.orders"))
 
+
 @api_order_bp.route("/<int:id>", methods=["PUT", "POST"])
 def process_order(id):
     data = request.form.to_dict()
@@ -46,7 +49,7 @@ def process_order(id):
     order = db.get_or_404(Order, id)
     process = True
     if process:
-        if "strategy"  not in data:
+        if "strategy" not in data:
             print("herejjj")
             strategy = "adjust"
         else:
@@ -55,7 +58,7 @@ def process_order(id):
         print(strategy)
         if strategy not in ["adjust", "reject", "ignore"]:
             return "Invalid Request", 400
-        if  not order.process(strategy):
+        if not order.process(strategy):
             return "Invalid Request", 400
-        
+
     return redirect(url_for("html.orders"))

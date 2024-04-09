@@ -3,7 +3,8 @@ import csv
 from db import db
 from models import Customer, Products, Order, ProductOrder
 from pathlib import Path
-from routes import api_customers_bp , api_products_bp,api_order_bp,htmls_bp
+from routes import api_customers_bp, api_products_bp, api_order_bp, htmls_bp
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
 app.instance_path = Path("./data").resolve()

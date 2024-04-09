@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, redirect, url_for
 from db import db
-from models import Customer, Products,Order, ProductOrder
+from models import Customer, Products, Order, ProductOrder
 
 # Create a Blueprint for the customers API
 api_products_bp = Blueprint("api_products", __name__)

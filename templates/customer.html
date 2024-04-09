@@ -1,14 +1,10 @@
-{% extends "base.html" %}
-
-{% block content %}
-<h1> customer Info</h1>
-<p> Name: {{customer.name}}</p>
-<p> Phone: {{customer.phone}}</p>
-<p> Balance: {{customer.balance}}</p>
+{% extends "base.html" %} {% block content %}
+<h1>customer Info</h1>
+<p>Name: {{customer.name}}</p>
+<p>Phone: {{customer.phone}}</p>
+<p>Balance: {{customer.balance}}</p>
 <a href="{{url_for('html.customers_info')}}">Back</a>
 {% for order in customer.orders %}
-    <p> Order: {{order.id}}</p>
-    <a href="{{url_for('html.orders_info', id=order.id)}}">Orders</a>
-{%endfor%}
-    
-{% endblock %}
+<p>Order: {{order.id}}</p>
+<a href="{{url_for('html.orders_info', id=order.id)}}">Orders</a>
+{%endfor%} {% endblock %}
